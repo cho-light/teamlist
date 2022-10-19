@@ -1,0 +1,63 @@
+body {
+  background-color: lightcyan;
+}
+
+.header {
+  align-items: center;
+  border: 1px solid #ddd;
+  display: flex;
+  height: 50px;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+.FORM-GROUP {
+  margin-top: 10px;
+  margin-left: 10px;
+  color: white;
+  text-shadow: 1px 4px 5px rgb(21, 186, 227);
+  border-radius: 3%;
+  background-color: lightskyblue;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+    rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  width: 700px;
+}
+.inpot {
+  border: 1px solid white;
+  margin-top: -1px;
+  width: 500px;
+  height: 30px;
+  border-radius: 10px;
+  margin-left: 5px;
+}
+.inpoot {
+  border: 1px solid white;
+  width: 500px;
+  margin-top: -15px;
+  margin-left: 5px;
+  border-radius: 10px;
+}
+
+.buttons {
+  margin: 5px;
+  border-radius: 5px;
+}
+
+.LIST-BOX {
+  border: 1px solid blue;
+  background-color: rgb(81, 206, 237);
+  margin-top: 10px;
+  text-shadow: 1px 1px black;
+  width: 700px;
+  border-radius: 10px;
+  color: white;
+}
+
+.layout {
+  margin: 0 auto;
+  max-width: 1200px;
+  min-width: 800px;
+}
+.comment {
+  border: 1px solid red;
+  text-align: center;
+}

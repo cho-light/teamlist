@@ -59,12 +59,10 @@ body {
 }
 .comment {
   border: 1px solid black;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
   width: 1000px;
   position: absolute;
   left: 700px;
+  justify-content: space-between;
 }
 .COMMENT-GROUP {
   display: flex;

@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { useDispatch} from "react-redux";
 import { __deleteTodoThunk } from "../redux/modules/todosSlice";
 import { useNavigate } from "react-router-dom";
-
+import {TiDeleteOutline} from "react-icons/ti"
 
 const Card = ({todo}) =>{
 
@@ -22,7 +22,10 @@ const Card = ({todo}) =>{
         >
             <StCardtop>
                 <StCardtitle>📝 {todo.title}</StCardtitle>
-                <button onClick={(e)=> {
+                <TiDeleteOutline
+                size="30"
+                color="red"
+                onClick={(e)=> {
                     e.stopPropagation();
                     const result = window.confirm("삭제하시겠습니까?")
                     if(result) {
@@ -33,7 +36,7 @@ const Card = ({todo}) =>{
                 }}
                 >
                     삭제
-                </button>
+                </TiDeleteOutline>
             </StCardtop>
 
                 <StCardbottom>작성자: {todo.user}</StCardbottom>    

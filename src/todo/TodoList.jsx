@@ -6,11 +6,13 @@ import {__getTodoThunk} from "../redux/modules/todosSlice"
 
 const TodoList = () =>{
     const todos = useSelector((state) => state.todos.todos);
+    
     const dispatch = useDispatch();
     
-    useEffect(()=> {
+    useEffect(() => {
         dispatch(__getTodoThunk());
-    },[]); 
+    }, [dispatch]);
+
     if (todos.length === 0)
         return(
             <div>
@@ -21,8 +23,8 @@ const TodoList = () =>{
       return(
         <div>
             <div>
-            {todos.map((todo,i) =>(
-              <Card key ={todo.id + i} todo ={todo}/>
+            {todos.map((todo) =>(
+              <Card key ={todo.id} todo ={todo}/>
               ))}
             </div>
         </div>

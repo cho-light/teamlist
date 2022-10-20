@@ -1,6 +1,5 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { __getCommnetsByTodoId } from "../redux/modules/commentsSlice";
 import { __deleteComment } from "../redux/modules/commentsSlice";
@@ -23,12 +22,13 @@ const Comments = () => {
 
 
   useEffect(() => {
-    dispatch(__getCommnetsByTodoId(id));
-  }, [dispatch, id]);
-  console.log(data);
+    // effect 구문에 생성한 함수를 넣어 실행합니다.
+    fetchTodos();
+  }, []);
 
   return (
     <div>
+
       <div className="comment">
         {data?.map((comment) => (
           <div key={comment.id}>
@@ -48,4 +48,4 @@ const Comments = () => {
   );
 };
 
-export default Comments;
+export default CommentList;

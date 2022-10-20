@@ -1,81 +1,56 @@
 import axios from "axios";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
 import styled from "styled-components";
-import { __addComment } from "../redux/modules/commentsSlice";
-
-const AddCommentForm = () => {
-  const dispatch = useDispatch();
-  const { id } = useParams();
-
-  const [comment, setComment] = useState({
-    username: "",
-    content: "",
+const Detailpage = () => {
+  const [comment, setcomment] = useState({
+    title: "",
   });
 
-  const onSubmitHandler = (event) => {
-    event.preventDefault();
-    if (comment.content.trim() === "" || comment.username.trim() === "") {
-      return alert("모든항목을 입력해라");
-    }
-
-    dispatch(__addComment({ todoId: id, ...comment }));
-    setComment({
-      username: "",
-      content: "",
-    });
+  const onSubmitHandler = (todo) => {
+    axios.post("http://localhost:3001/comment", todo);
   };
+  //env처리해서 안보여주게하기
 
-  const onChangeHandler = (event) => {
-    const { name, value } = event.target;
-    setComment({
-      ...comment,
-      [name]: value,
-    });
-  };
   return (
     <Stlayout>
-      <form onSubmit={onSubmitHandler} className="COMMENT-GROUP">
-        <StNameInput>
-          <input
-            className="input-box"
-            placeholder="이름 (5자 이내)"
-            value={comment.username}
-            type="text"
-            name="username"
-            onChange={onChangeHandler}
-            maxLength={5}
-          />
-        </StNameInput>
+      <form
+        className="FORM-GROUP"
+        onSubmit={(e) => {
+          // 👇 submit했을 때 브라우저의 새로고침을 방지합니다. //포스트구문 전부
+
+          onSubmitHandler(comment);
+        }}
+      >
+        <h1>댓글</h1>
         <input
-          className="input-box"
-          placeholder="댓글을 추가하세요. (100자 이내)"
-          value={comment.content}
-          name="content"
+          className="inpot"
           type="text"
-          onChange={onChangeHandler}
-          maxLength={100}
+          required
+          onChange={(ev) => {
+            const { value } = ev.target;
+            setcomment({
+              ...comment,
+              title: value,
+            });
+          }}
         />
-        <button
-          type="submit"
-          onClick={onSubmitHandler}
-          disabled={comment?.content === "" ? true : false}
-        >
-          추가하기
-        </button>
+        <div>
+          <button
+            disabled={comment.title === "" ? true : false}
+            className="buttons"
+          >
+            추가하기
+          </button>
+        </div>
       </form>
     </Stlayout>
   );
 };
 
-export default AddCommentForm;
+export default Detailpage;
 
 const Stlayout = styled.div`
   margin: 0 auto;
   max-width: 1000px;
   min-width: 800px;
-`;
-const StNameInput = styled.div`
-  width: 150px;
 `;

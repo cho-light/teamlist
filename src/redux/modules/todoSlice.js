@@ -5,7 +5,7 @@ export const __getTodoThunk = createAsyncThunk(
     "GET_TODO", //action value
     async (payload, thunkAPI) => { //콜백
         try{
-            const data = await axios.get("http://localhost:3001/todos");
+            const data = await axios.get(`http://localhost:3001/todos${payload}`);
             console.log(data)
             return thunkAPI.fulfillWithValue(data.data);
             
@@ -20,11 +20,11 @@ export const __updateTodoThunk = createAsyncThunk(
         try{
             await axios.patch(`http://localhost:3001/todos${payload.id}`,payload);  //patch (Update)
             return thunkAPI.fulfillWithValue(payload);
+            
         }catch(error){
             return thunkAPI.rejectWithValue(error);
         }}
 );
-
 
 const initialState = {
     todo: {
@@ -38,13 +38,14 @@ const initialState = {
 };
 
 export const todoSlice = createSlice({
-    name: "todo", //모듈
+    name: "todos", //모듈
     initialState,
     reducers: {}, //action value + action creator
     extraReducers:{
         [__getTodoThunk.fulfilled]: (state, action) => {
             state.isLoading = false;
             state.todo = action.payload;
+            
         },
         [__getTodoThunk.rejected]: (state, action) => {
             state.isLoading = false;

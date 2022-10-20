@@ -6,7 +6,6 @@ export const __getCommentsThunk = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const { data } = await axios.get("http://localhost:3001/comments");
-      console.log(data);
       return thunkAPI.fulfillWithValue(data);
     } catch (e) {
       return thunkAPI.rejectWithValue(e.code);
@@ -18,9 +17,7 @@ export const __getCommnetsByTodoId = createAsyncThunk(
   "GET_COMMENT_BY_TODO_ID",
   async (arg, thunkAPI) => {
     try {
-      const { data } = await axios.get(
-        `http://localhost:3001/comments?todoId=${arg}`
-      );
+      const { data } = await axios.get(`http://localhost:3001/comments?todoId=${arg}`);
       return thunkAPI.fulfillWithValue(data);
     } catch (e) {
       return thunkAPI.rejectWithValue(e.code);
@@ -68,7 +65,8 @@ const initialState = {
 export const commentsSlice = createSlice({
   name: "comments",
   initialState,
-  reducers: {},
+  reducers: {
+  },
   extraReducers: {
     // 전체 댓글 조회
     [__getCommentsThunk.pending]: (state) => {

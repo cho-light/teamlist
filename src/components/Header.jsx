@@ -1,8 +1,7 @@
-
 import React from "react";
 import { Link } from "react-router-dom";
 
-export const navbar = () => {
+export const header = () => {
   return (
     <div className="header">
       <Link to="/">홈</Link>
@@ -11,5 +10,4 @@ export const navbar = () => {
   );
 };
 
-export default navbar;
-
+export default header;

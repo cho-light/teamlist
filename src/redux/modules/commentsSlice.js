@@ -5,7 +5,7 @@ export const __getCommentsThunk = createAsyncThunk(
   "GET_COMMENTS",
   async (_, thunkAPI) => {
     try {
-      const { data } = await axios.get("http://localhost:3001/comments");
+      const { data } = await axios.get("http://localhost:3001/comment");
       console.log(data);
       return thunkAPI.fulfillWithValue(data);
     } catch (e) {
@@ -19,7 +19,7 @@ export const __getCommnetsByTodoId = createAsyncThunk(
   async (arg, thunkAPI) => {
     try {
       const { data } = await axios.get(
-        `http://localhost:3001/comments?todoId=${arg}`
+        `http://localhost:3001/comment?todoId=${arg}`
       );
       return thunkAPI.fulfillWithValue(data);
     } catch (e) {
@@ -32,7 +32,7 @@ export const __updateComment = createAsyncThunk(
   "UPDATE_COMMENT",
   async (arg, thunkAPI) => {
     try {
-      axios.patch(`http://localhost:3001/comments/${arg.id}`, arg);
+      axios.patch(`http://localhost:3001/comment/${arg.id}`, arg);
       return thunkAPI.fulfillWithValue(arg);
     } catch (e) {
       return thunkAPI.rejectWithValue(e);
@@ -44,7 +44,7 @@ export const __addComment = createAsyncThunk(
   "ADD_COMMENT",
   async (arg, thunkAPI) => {
     try {
-      const { data } = await axios.post(`http://localhost:3001/comments`, arg);
+      const { data } = await axios.post(`http://localhost:3001/comment`, arg);
       return thunkAPI.fulfillWithValue(data);
     } catch (e) {
       return thunkAPI.rejectWithValue(e);

@@ -20,10 +20,8 @@ const Comments = () => {
       <div className="comment">
         {data?.map((comment) => (
           <div key={comment.id}>
-            <div>
-              {comment.content}
-              {comment.username}
-            </div>
+            <div> 작성자:{comment.username}</div>
+            <div>내용:{comment.content}</div>
           </div>
         ))}
       </div>

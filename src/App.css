@@ -58,6 +58,14 @@ body {
   min-width: 800px;
 }
 .comment {
-  border: 1px solid red;
+  border: 1px solid black;
+  align-items: center;
+  justify-content: center;
   text-align: center;
+  width: 1000px;
+  position: absolute;
+  left: 700px;
+}
+.COMMENT-GROUP {
+  display: flex;
 }

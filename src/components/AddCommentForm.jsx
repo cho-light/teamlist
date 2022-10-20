@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import { __addComment } from "../redux/modules/commentsSlice";
-
+//이거임
 const AddCommentForm = () => {
   const dispatch = useDispatch();
   const { id } = useParams();

@@ -5,12 +5,11 @@ import styled from "styled-components";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { __addTodoThunk } from "../redux/modules/todosSlice";
-import AddCommentForm from "../components/AddCommentForm";
 
 export const Formepage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [todo, setTodo] = useState();
+  const [todo,setTodo] = useState();
   const goToListpage = () => {
     navigate("/todos");
   };
@@ -19,24 +18,21 @@ export const Formepage = () => {
   };
   const onSubmitHandler = (todo) => {
     dispatch(__addTodoThunk(todo));
-    navigate("/todos");
+    navigate('/todos');
   };
 
   return (
     <Stlayout>
       <Header />
       <form
-        className="FORM-GROUP"
         onSubmit={(e) => {
-          // 👇 submit했을 때 브라우저의 새로고침을 방지합니다. //포스트구문 전부
-
           onSubmitHandler(todo);
           goToListpage(e);
         }}
       >
         <h1>작성자</h1>
-        <input
-          className="inpot"
+        <St_input
+          placeholder = "작성자의 이름을 입력해주세요. (5자 이내)"
           type="text"
           required
           onChange={(ev) => {
@@ -48,12 +44,12 @@ export const Formepage = () => {
           }}
         />
         <h1>제목</h1>
-        <input
-          className="inpot"
+        <St_input
+          placeholder="제목을 입력해주세요. (50자 이내)"
           type="text"
           required
-          title="제목을 10글자이상입력하세요"
-          pattern=".{10,1000}"
+          title="제목을 5글자 이상입력하세요"
+          pattern=".{5,50}"
           onChange={(ev) => {
             const { value } = ev.target;
             setTodo({
@@ -63,9 +59,9 @@ export const Formepage = () => {
           }}
         />
         <h1>내용</h1>
-        <textarea
-          className="inpoot"
-          cols="250"
+        <St_text
+          placeholder="내용을 입력해주세요. (200자 이내)"
+          cols="100"
           rows="10"
           type="text"
           required
@@ -77,17 +73,18 @@ export const Formepage = () => {
             });
           }}
         />
-        <div>
-          <button onClick={goToHomepage} className="buttons">
+        <St_butdiv>
+          <St_but onClick={goToHomepage}>
             이전으로
-          </button>
-          <button
+          </St_but>
+          <St_but
             disabled={todo?.body === "" ? true : false}
-            className="buttons"
           >
             추가하기
-          </button>
-        </div>
+          </St_but>
+        </St_butdiv>
+
+        
       </form>
     </Stlayout>
   );
@@ -99,4 +96,49 @@ const Stlayout = styled.div`
   margin: 0 auto;
   max-width: 1000px;
   min-width: 800px;
-`;
+`
+const St_input = styled.input`
+    width: 100%;
+    border: 1px solid rgb(238, 238, 238);;
+    padding: 12px;
+    font-size: 14px;
+    max-width : 980px;
+    border-radius: 12px;
+`
+
+const St_text = styled.textarea`
+    width: 100%;
+    border: 1px solid rgb(238, 238, 238);;
+    padding: 12px;
+    font-size: 14px;
+    max-width : 980px;
+    border-radius: 12px;
+`
+const St_but = styled.button`
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    flex-direction: row;
+    border: 3px solid rgb(238, 238, 238);
+    background-color: rgb(255, 255, 255);
+    height: 46px;
+    border-radius: 8px;
+    width: 100%;
+    max-width : 100px;
+    cursor: pointer;
+    margin-top: 12px;
+`
+
+const St_butdiv = styled.div`
+    width: 100%;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: right;
+    flex-direction: row;
+    gap: 12px;
+`
+

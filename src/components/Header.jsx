@@ -1,9 +1,13 @@
+
 import {FcHome} from "react-icons/fc"
+
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
+
 export const Header = () => {
+
   return (
     <div>
       <St_Header>
@@ -31,4 +35,5 @@ const St_Header = styled.div`
   padding: 0 20px;
   border-radius : 10px;
 `
+
 
